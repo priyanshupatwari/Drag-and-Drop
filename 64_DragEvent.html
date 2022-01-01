@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="64_DragEvent.css">
+</head>
+
+<body>
+
+    <div class="main">
+        <h1>You can drag and drop the image !</h1>
+        <div>
+            <div class="whiteBox">
+                <div class="imgBox" draggable="true"></div>
+            </div>
+            <div class="whiteBox"></div>
+            <div class="whiteBox"></div>
+            <div class="whiteBox"></div>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    console.log('This is drag and drop utility');
+
+    const imgBox = document.querySelector('.imgBox');
+
+    // Event listeners for draggable element imgBox
+    imgBox.addEventListener('dragstart', (e) => {
+        console.log('DragStart has been triggered');
+        e.target.className += ' hold'; //adds classname
+        setTimeout(() => {
+            e.target.className = 'hide ';
+        }, 0);
+
+    });
+
+    imgBox.addEventListener('dragend', (e) => {
+        console.log('DragEnd has been triggered', e.target);
+        e.target.className = 'imgBox';
+    });
+    // START, loop{(ENTER, OVER), (LEAVE OR END), DROP} |
+    const whiteBoxes = document.getElementsByClassName('whiteBox');
+    for (whiteBox of whiteBoxes) { //Make a function for every item
+        // START, loop{(ENTER, OVER), (LEAVE OR END), DROP} |
+        whiteBox.addEventListener('dragenter', (e) => {
+            console.log('DragEnter has been triggered');
+            e.target.className += ' dashed'; //add a new class DO NOT remove aold class
+        })
+        whiteBox.addEventListener('dragover', (e) => {
+            e.preventDefault();  //Now you can drop
+            console.log('DragOver has been triggered');
+        });
+
+
+        whiteBox.addEventListener('dragleave', (e) => {
+            console.log('DragLeave has been triggered');
+            e.target.className = 'whiteBox'
+        })
+        // OR, 
+        whiteBox.addEventListener('drop', (e) => {
+            console.log('Drop has been triggered');
+            // console.log(imgBox);
+            e.target.appendChild(imgBox);
+            e.target.append(imgBox); //S A M E 
+        })
+    }
+
+</script>
+
+</html>

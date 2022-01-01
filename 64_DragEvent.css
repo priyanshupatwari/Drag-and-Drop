@@ -1,0 +1,46 @@
+*{
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+  font-family: 'Noto Sans', sans-serif;
+}
+body{
+    background: rgb(49, 57, 75);
+}
+.main{
+    display: grid;
+    place-items: center;
+}.main h1{
+    color: rgb(234, 245, 83);
+}
+.imgBox{
+    background: no-repeat center center/cover;
+    background-image: url('64_DragPhoto.jpeg') ;
+    position: relative;
+    top: 7px;
+    left: 5px;
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.whiteBox{
+    display: inline-block;
+    height: 155px;
+    width: 155px;
+    margin: 10px;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.hold{
+    border-radius: 20px;
+}
+
+.dashed{
+    background: rgb(234, 245, 83);
+    box-shadow: 7px 7px 16px 0px rgba(234, 245, 83, 0.55);
+}
+
+.hide{
+    display: none;
+}
